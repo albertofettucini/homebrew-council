@@ -1,6 +1,6 @@
 cask "council" do
-  version "1.1.4"
-  sha256 "ee1767d53824491303b6d810b6d49adf7805c5b2a87b6fe3dcbaefee40091566"
+  version "1.1.5"
+  sha256 "b0b680cc864b1f12a8bee1d8f0440f9c4870af0dd907324bde702b4da248b6c1"
 
   url "https://github.com/albertofettucini/Council/releases/download/v#{version}/Council-#{version}-macOS.zip"
   name "Council"
