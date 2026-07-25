@@ -1,6 +1,6 @@
 cask "council" do
-  version "1.1.6"
-  sha256 "9234907a9bb071f9ac59cdc69415a8e6ac6fdcccf230126fe272a2cfcc7900f7"
+  version "1.2.0"
+  sha256 "f16f65f9f59ca10690b50eb3b7d190a5ecdf592b33b873ee9fbcb2c682d9659b"
 
   url "https://github.com/albertofettucini/Council/releases/download/v#{version}/Council-#{version}-macOS.zip"
   name "Council"
@@ -13,10 +13,13 @@ cask "council" do
 
   app "Council.app"
 
+  # Council is sandboxed, so the app's own data (sessions, preferences, Sparkle's cache) all lives
+  # inside its container. The bare ~/Library paths are the non-sandboxed `council` CLI's copy.
   zap trash: [
     "~/Library/Application Support/Council",
     "~/Library/Caches/com.joseph.Council",
     "~/Library/Caches/org.sparkle-project.Sparkle/com.joseph.Council",
+    "~/Library/Containers/com.joseph.Council",
     "~/Library/Preferences/com.joseph.Council.plist",
   ]
 
