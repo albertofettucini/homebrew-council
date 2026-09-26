@@ -1,6 +1,6 @@
 cask "council" do
-  version "1.2.0"
-  sha256 "f16f65f9f59ca10690b50eb3b7d190a5ecdf592b33b873ee9fbcb2c682d9659b"
+  version "1.3.0"
+  sha256 "cb5b8d11dfdcb78e43480bab2d813e662f6e13bb78d6dc10955738d02d0f3406"
 
   url "https://github.com/albertofettucini/Council/releases/download/v#{version}/Council-#{version}-macOS.zip"
   name "Council"
@@ -24,10 +24,14 @@ cask "council" do
   ]
 
   # The app is unsigned (no paid Apple cert). Homebrew quarantines downloads, so on first launch
-  # macOS shows an "unidentified developer" prompt — right-click the app → Open (once). To skip the
-  # prompt entirely, install with:  brew install --cask --no-quarantine council
+  # macOS blocks it ("could not verify") — Done, then System Settings → Privacy & Security → Open Anyway
+  # (the button only shows for about an hour after the blocked launch). macOS 14 still accepts
+  # right-click → Open; 15 and later do not. To skip the prompt entirely, install with:
+  #   brew install --cask --no-quarantine council
   caveats <<~EOS
-    Council is unsigned. On first launch, right-click Council in Applications and choose Open,
-    then confirm — macOS remembers the choice. Or install with --no-quarantine to skip that step.
+    Council is unsigned. On first launch macOS will say it could not verify the app: click Done,
+    then open System Settings > Privacy & Security, scroll to Security, click "Open Anyway" (within
+    the hour - the button goes away after that) and confirm with your password. macOS remembers it.
+    On macOS 14, right-click > Open still works. Or install with --no-quarantine to skip this step.
   EOS
 end
