@@ -26,12 +26,14 @@ cask "council" do
   # The app is unsigned (no paid Apple cert). Homebrew quarantines downloads, so on first launch
   # macOS blocks it ("could not verify") — Done, then System Settings → Privacy & Security → Open Anyway
   # (the button only shows for about an hour after the blocked launch). macOS 14 still accepts
-  # right-click → Open; 15 and later do not. To skip the prompt entirely, install with:
-  #   brew install --cask --no-quarantine council
+  # right-click → Open; 15 and later do not. Homebrew no longer has --no-quarantine, so the way to
+  # skip the prompt entirely is to clear the flag after installing:
+  #   xattr -dr com.apple.quarantine /Applications/Council.app
   caveats <<~EOS
     Council is unsigned. On first launch macOS will say it could not verify the app: click Done,
     then open System Settings > Privacy & Security, scroll to Security, click "Open Anyway" (within
     the hour - the button goes away after that) and confirm with your password. macOS remembers it.
-    On macOS 14, right-click > Open still works. Or install with --no-quarantine to skip this step.
+    On macOS 14, right-click > Open still works. To skip this step, run once after installing:
+      xattr -dr com.apple.quarantine /Applications/Council.app
   EOS
 end

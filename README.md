@@ -11,10 +11,11 @@ That downloads, unzips, and installs Council.app in one step. The app is unsigne
 cert), so macOS blocks the first launch: open Council once, click Done on the "could not verify"
 message, then System Settings → Privacy & Security → scroll to Security → Open Anyway, and confirm
 with your password. Do it within the hour — the button goes away after that. macOS remembers it from
-then on. (On macOS 14, right-click → Open still works.) To skip even that:
+then on. (On macOS 14, right-click → Open still works.) To skip even that, run this once after
+installing:
 
 ```sh
-brew install --cask --no-quarantine albertofettucini/council/council
+xattr -dr com.apple.quarantine /Applications/Council.app
 ```
 
 After install, Council keeps itself up to date via Sparkle.
